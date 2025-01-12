@@ -1,0 +1,98 @@
+<%- include('header.ejs') %>
+<div class="container my-5">
+    <h1 class="text-center">Check the Weather</h1>
+    <!-- Weather Query Form -->
+    <form id="weather-form" action="/weather" method="get" class="my-4">
+        <div class="mb-3">
+            <label for="queryType" class="form-label"><strong>Select Query Type:</strong></label>
+            <select id="queryType" class="form-select" name="queryType" required>
+                <option value="">Choose...</option>
+                <option value="latlon">Latitude & Longitude</option>
+                <option value="city">City</option>
+                <option value="postal">Postal Code & Country</option>
+            </select>
+        </div>
+        <!-- Latitude/Longitude Fields -->
+        <div id="latlon-fields" class="query-fields d-none">
+            <div class="mb-3">
+                <label for="lat" class="form-label">Latitude:</label>
+                <input type="text" id="lat" name="lat" class="form-control" placeholder="Enter latitude">
+            </div>
+            <div class="mb-3">
+                <label for="lon" class="form-label">Longitude:</label>
+                <input type="text" id="lon" name="lon" class="form-control" placeholder="Enter longitude">
+            </div>
+        </div>
+        <!-- City Fields -->
+        <div id="city-fields" class="query-fields d-none">
+            <div class="mb-3">
+                <label for="city" class="form-label">City:</label>
+                <input type="text" id="city" name="city" class="form-control" placeholder="Enter city">
+            </div>
+            <div class="mb-3">
+                <label for="country" class="form-label">Country Code (Optional):</label>
+                <input type="text" id="country" name="country" class="form-control" placeholder="Enter country code (e.g., US)">
+            </div>
+        </div>
+        <!-- Postal Code Fields -->
+        <div id="postal-fields" class="query-fields d-none">
+            <div class="mb-3">
+                <label for="postal_code" class="form-label">Postal Code:</label>
+                <input type="text" id="postal_code" name="postal_code" class="form-control" placeholder="Enter postal code">
+            </div>
+            <div class="mb-3">
+                <label for="country_postal" class="form-label">Country Code:</label>
+                <input type="text" id="country_postal" name="country" class="form-control" placeholder="Enter country code (e.g., US)">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Get Weather</button>
+    </form>
+
+    <% if (error) { %>
+        <div class="alert alert-danger text-center">
+            <strong>Error:</strong> <%= error %>
+        </div>
+    <% } else if (data) { %>
+        <div class="card shadow mt-4">
+            <div class="card-body">
+                <h3 class="card-title text-center">
+                    Weather in <%= data.city_name %>, <%= data.country_code %>
+                </h3>
+                <p class="text-center text-muted">Last updated: <%= data.ob_time %></p>
+                <div class="row">
+                    <div class="col-md-6 text-center">
+                        <img src="https://www.weatherbit.io/static/img/icons/<%= data.weather.icon %>.png" alt="Weather Icon">
+                        <h4><%= data.weather.description %></h4>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-group">
+                            <li class="list-group-item"><strong>Temperature:</strong> <%= data.temp %>°C</li>
+                            <li class="list-group-item"><strong>Feels Like:</strong> <%= data.app_temp %>°C</li>
+                            <li class="list-group-item"><strong>Humidity:</strong> <%= data.rh %>%</li>
+                            <li class="list-group-item"><strong>Wind Speed:</strong> <%= data.wind_spd %> m/s</li>
+                            <li class="list-group-item"><strong>Wind Direction:</strong> <%= data.wind_cdir_full %> (<%= data.wind_cdir %>)</li>
+                            <li class="list-group-item"><strong>Pressure:</strong> <%= data.pres %> mb</li>
+                            <li class="list-group-item"><strong>Visibility:</strong> <%= data.vis %> km</li>
+                            <li class="list-group-item"><strong>Cloud Cover:</strong> <%= data.clouds %>%</li>
+                            <li class="list-group-item"><strong>Sunrise:</strong> <%= data.sunrise %></li>
+                            <li class="list-group-item"><strong>Sunset:</strong> <%= data.sunset %></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% } %>
+</div>
+
+<script>
+    const queryType = document.getElementById("queryType");
+    const queryFields = document.querySelectorAll(".query-fields");
+    queryType.addEventListener("change", (e) => {
+        queryFields.forEach(field => field.classList.add("d-none")); // Hide all query fields
+        const selectedValue = e.target.value;
+        if (selectedValue) {
+            document.getElementById(`${selectedValue}-fields`).classList.remove("d-none"); // Show selected query fields
+        }
+    });
+</script>
+<%- include('footer.ejs') %>
