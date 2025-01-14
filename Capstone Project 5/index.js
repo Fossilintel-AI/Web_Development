@@ -100,11 +100,6 @@ let books = [
 ];
 
 
-const WEATHER_API_URL = "https://api.weatherbit.io/v2.0/current";
-const WEATHER_API_KEY = "54a1150adefc4e759bc62e76ff3ad71a"; // Replace with your actual Weather API key
-const BASE_URL = "https://date.nager.at/api/v3";
-
-
 
 app.get("/", async (req, res) => {
 
