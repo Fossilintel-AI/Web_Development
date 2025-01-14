@@ -1,0 +1,39 @@
+<%- include('header.ejs') %>
+<main>
+  <div class="container my-5">
+    <div class="card shadow-lg mb-4">
+      <div class="card-body">
+        <p class="card-text">
+          Tiny summary but detailed notes for each. This page will constantly update as I read more, so bookmark it if you want to check back in a few months.<br>
+          Sorted with my top recommendations up top. Sort by title, newest, or best.<br>
+          If you have any questions. You can also <a href="mailto:simphiweharvey@gmail.com" class="text-decoration-underline">email me</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="container my-5">
+    <h3 class="mb-4">Books I've Read</h3>
+    <div class="row">
+      <% books.forEach(book => { %>
+        <div class="col-md-4 mb-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title"><%= book.title %></h5>
+              <p class="card-text"><strong>Date:</strong> <%= book.date %></p>
+              <p class="card-text"><strong>Rating:</strong> <%= book.rating %></p>
+              <p class="card-text"><strong>Notes:</strong> <%= book.notes %></p>
+              <div class="d-flex justify-content-between">
+                <a href="/edit?id=<%= book.id %>" class="btn btn-warning">Edit</a>
+                <a href="/delete?id=<%= book.id %>" class="btn btn-danger">Delete</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+  <div class="container text-center my-5">
+    <a href="/newbook" class="btn btn-success">Add New Book</a>
+  </div>
+</main>
+<%- include('footer.ejs') %>

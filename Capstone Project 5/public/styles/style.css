@@ -1,0 +1,157 @@
+/* General Reset */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Body Styling */
+body {
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Footer Styles */
+.footer {
+  margin-top: auto;  /* Push the footer to the bottom */
+}
+
+/* Fade-In Animation for Cards */
+.card {
+  animation: fadeIn 1.5s ease-in-out;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Card Hover Effect: Shadow and Slight Elevation */
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Keyframes for Fade-In */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Button Hover Effect with Color Change */
+button,
+a.btn {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Button Color Change on Hover */
+button:hover,
+a.btn:hover {
+  background-color: #ffc107;  /* Highlight Color */
+  color: white;
+  transform: scale(1.05);  /* Slight scale-up effect */
+}
+
+/* Smooth Fade-In for Content */
+.container {
+  opacity: 0;
+  animation: contentFadeIn 1.2s forwards ease-in-out;
+}
+
+@keyframes contentFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Smooth transition for buttons when clicked */
+button:active,
+a.btn:active {
+  transform: scale(0.98);  /* Slight shrink effect */
+}
+
+/* Card Hover Effect: Box Shadow and Elevation */
+.card-body {
+  padding: 20px;
+  background-color: white;
+}
+
+/* Hover effect for each card to scale slightly */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 12px 22px rgba(0, 0, 0, 0.1);
+}
+
+/* Disappearing Effect for Cards and Sections */
+.card.disappear, .container.disappear {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Appearing Effect for Cards and Sections */
+.card.appear, .container.appear {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Basic Style for Buttons */
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+/* Title Animation */
+.title {
+  font-family: 'Arial', sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #007bff;
+  text-align: center;
+  position: relative;
+  animation: titleAnimation 2s ease-in-out infinite;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+@keyframes titleAnimation {
+  0% {
+    transform: translateY(0);
+    color: #007bff;
+    text-shadow: 0 0 10px rgba(0, 123, 255, 0.7), 0 0 20px rgba(0, 123, 255, 0.7), 0 0 30px rgba(0, 123, 255, 0.7);
+  }
+  50% {
+    transform: translateY(-10px);
+    color: #ff5722;
+    text-shadow: 0 0 15px rgba(255, 87, 34, 0.7), 0 0 30px rgba(255, 87, 34, 0.7), 0 0 45px rgba(255, 87, 34, 0.7);
+  }
+  100% {
+    transform: translateY(0);
+    color: #007bff;
+    text-shadow: 0 0 10px rgba(0, 123, 255, 0.7), 0 0 20px rgba(0, 123, 255, 0.7), 0 0 30px rgba(0, 123, 255, 0.7);
+  }
+}
+
+/* Add glow effect on hover */
+.title:hover {
+  animation: none;
+  color: #ff5722;
+  text-shadow: 0 0 15px rgba(255, 87, 34, 1), 0 0 30px rgba(255, 87, 34, 1), 0 0 45px rgba(255, 87, 34, 1);
+}
