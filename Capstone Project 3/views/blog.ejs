@@ -1,0 +1,11 @@
+<%- include("partials/header.ejs") %>
+<section class="post-section">
+    <h1>Create New Post</h1>
+    <form action="/newPost" method="POST">
+        <input name="name" type="text" class="feedback-input" placeholder="Author" required />
+        <input name="title" type="text" class="feedback-input" placeholder="Title" required />
+        <textarea name="text" class="feedback-input" placeholder="What's on your mind?" required></textarea>
+        <input type="submit" value="Submit" />
+    </form>
+</section>
+<%- include("partials/footer.ejs") %>

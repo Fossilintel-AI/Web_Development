@@ -1,0 +1,20 @@
+<%- include("partials/header.ejs") %>
+<section class="posts-section">
+    <h1 class="text-center mb-4">Blog Posts</h1>
+    <div class="row">
+        <% storage.forEach((post, index) => { %>
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h4 class="card-title"><%= post.title %></h4>
+                        <h6 class="card-subtitle mb-2 text-muted">By <%= post.name %> on <%= post.date %></h6>
+                        <p class="card-text"><%= post.text %></p>
+                        <a href="/edit/<%= index %>" class="btn btn-warning">Edit</a>
+                        <a href="/delete/<%= index %>" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</section>
+<%- include("partials/footer.ejs") %>

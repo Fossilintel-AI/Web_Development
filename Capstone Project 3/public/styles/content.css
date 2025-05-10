@@ -1,0 +1,107 @@
+/* General styling */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f7f6;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2 {
+  font-weight: 700;
+  color: #3586ff;
+  text-align: center;
+}
+
+.myList {
+  text-align: center;
+  list-style-type: none;  /* Optional: removes bullet points */
+  padding: 0;  /* Optional: removes default padding */
+}
+
+.myList li {
+  display: inline-block;  /* Ensures the items are in line with each other */
+  margin: 10px;  /* Optional: adds spacing between list items */
+}
+
+header, footer {
+  background-color: #3586ff;
+  padding: 20px 0;
+  color: white;
+  text-align: center;
+}
+
+footer {
+  margin-top: 30px;
+}
+
+.profile {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.container {
+  padding: 50px;
+}
+
+.feedback-input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 2px solid #3586ff;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.feedback-input:focus {
+  border-color: #3586ff;
+}
+
+textarea {
+  height: 150px;
+}
+
+[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  background-color: #3586ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+[type="submit"]:hover {
+  background-color: #2b70e0;
+}
+
+.card {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.btn {
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.btn-warning {
+  background-color: #ffad33;
+}
+
+.btn-danger {
+  background-color: #ff4c4c;
+}

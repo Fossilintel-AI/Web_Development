@@ -1,0 +1,49 @@
+<%- include('header.ejs') %>
+
+<div class="container my-5">
+    <h1 class="text-center mb-4">Public Holidays Calendar</h1>
+    <form action="/calendar/holidays" method="get" class="mb-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <label for="countryCode" class="form-label"><strong>Select a Country:</strong></label>
+                <select id="countryCode" name="countryCode" class="form-select" required>
+                    <option value="">Choose a country...</option>
+                    <% countries.forEach(country => { %>
+                        <option value="<%= country.countryCode %>" <%= selectedCountry === country.countryCode ? "selected" : "" %>>
+                            <%= country.name %>
+                        </option>
+                    <% }) %>
+                </select>
+            </div>
+        </div>
+        <div class="text-center mt-3">
+            <button type="submit" class="btn btn-primary">Get Holidays</button>
+        </div>
+    </form>
+
+    <% if (error) { %>
+        <div class="alert alert-danger text-center"><%= error %></div>
+    <% } %>
+
+    <% if (holidays) { %>
+        <div class="mt-4">
+            <h2 class="text-center">Public Holidays in <%= countries.find(c => c.countryCode === selectedCountry)?.name %></h2>
+            <div class="text-center">
+                <img src="https://flagcdn.com/w320/<%= selectedCountry.toLowerCase() %>.png" alt="Flag of <%= selectedCountry %>" class="my-3" style="width: 100px;">
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <ul class="list-group">
+                        <% holidays.forEach(holiday => { %>
+                            <li class="list-group-item">
+                                <strong><%= holiday.date %>:</strong> <%= holiday.localName %> (<%= holiday.name %>)
+                            </li>
+                        <% }) %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <% } %>
+</div>
+
+<%- include('footer.ejs') %>
